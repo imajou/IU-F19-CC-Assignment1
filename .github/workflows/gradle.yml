@@ -1,0 +1,20 @@
+name: Gradle build and run
+
+on: 
+  push:
+    branches:
+    - master
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Gradle
+      run: ./gradlew build
+    - name: Run on Test1.kt
+      run: ./gradlew run
